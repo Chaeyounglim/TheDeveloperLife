@@ -34,3 +34,12 @@
     text-align: left;
     width: 323px;
 }
+
+.all-body {
+    text-align: center;
+}
+
+.comment-textarea{
+    width: 500px;
+    text-align: left;
+}

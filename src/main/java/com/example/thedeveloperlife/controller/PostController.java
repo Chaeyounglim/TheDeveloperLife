@@ -35,6 +35,16 @@ public class PostController {
         return "writePost";
     }
 
+    @GetMapping("/post-page/{id}")
+    public String getPost(@PathVariable Long id,
+                          Model model,
+                          @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        PostResponseDto responseDto = postService.lookupPost(id);
+        model.addAttribute("user",userDetails.getUser().getName());
+        model.addAttribute("post", responseDto);
+        return "postDetail"; // postDetail.html view
+    }
+
     @GetMapping("/posts")
     @ResponseBody
     public List<PostResponseDto> getPosts() {
